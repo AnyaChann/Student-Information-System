@@ -24,7 +24,7 @@ public class SubjectController {
 
     @GetMapping("/new")
     public String showSubjectForm(Model model) {
-        model.addAttribute("subject", new Subject());
+        model.addAttribute("subject", new Subject()); // Requires a no-argument constructor
         return "add-subject";
     }
 

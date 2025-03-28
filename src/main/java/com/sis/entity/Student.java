@@ -2,8 +2,12 @@ package com.sis.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "student_t")
 public class Student {
@@ -11,11 +15,18 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
 
-    @Column(name = "student_code", nullable = false, unique = true)
+    @Column(name = "student_code", nullable = true, unique = true)
     private String studentCode;
 
-    @Column(name = "full_name", nullable = false)
+    @Column(name = "full_name", nullable = true)
     private String fullName;
+
+    // Custom constructor for DataInitializer
+    public Student(String studentCode, String fullName) {
+        this.studentCode = studentCode;
+        this.fullName = fullName;
+    }
+    
 
     /**
      * @return Integer return the studentId

@@ -4,49 +4,94 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add/Edit Subject</title>
+    <!-- Add Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
   </head>
-  <body>
+  <body class="container mt-4">
     <!-- Navigation Bar -->
-    <nav>
-      <a href="/">Home</a> | <a href="/students">Student List</a> |
-      <a href="/students/new">Add Student</a> |
-      <a href="/scores/new">Add Score</a> |
-      <a href="/subjects">Subject List</a> |
-      <a href="/subjects/new">Add Subject</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">SIS</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="/students">Student List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/students/new">Add Student</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/scores/new">Add Score</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/subjects">Subject List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/subjects/new">Add Subject</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
-    <hr />
+
     <h1
+      class="mb-4"
       th:text="${subject.subjectId == null ? 'Add Subject' : 'Edit Subject'}"
     ></h1>
-    <form th:action="@{/subjects/save}" th:object="${subject}" method="post">
-      <label for="subjectCode">Subject Code:</label>
-      <input
-        type="text"
-        id="subjectCode"
-        name="subjectCode"
-        th:value="*{subjectCode}"
-        required
-      /><br />
 
-      <label for="subjectName">Subject Name:</label>
-      <input
-        type="text"
-        id="subjectName"
-        name="subjectName"
-        th:value="*{subjectName}"
-        required
-      /><br />
+    <form
+      th:action="@{/subjects/save}"
+      th:object="${subject}"
+      method="post"
+      class="row g-3"
+    >
+      <div class="col-md-6">
+        <label for="subjectCode" class="form-label">Subject Code:</label>
+        <input
+          type="text"
+          id="subjectCode"
+          name="subjectCode"
+          th:field="*{subjectCode}"
+          class="form-control"
+          required
+        />
+      </div>
 
-      <label for="credit">Credit:</label>
-      <input
-        type="number"
-        id="credit"
-        name="credit"
-        th:value="*{credit}"
-        required
-      /><br />
+      <div class="col-md-6">
+        <label for="subjectName" class="form-label">Subject Name:</label>
+        <input
+          type="text"
+          id="subjectName"
+          name="subjectName"
+          th:field="*{subjectName}"
+          class="form-control"
+          required
+        />
+      </div>
 
-      <button type="submit">Save</button>
+      <div class="col-md-6">
+        <label for="credit" class="form-label">Credit:</label>
+        <input
+          type="number"
+          id="credit"
+          name="credit"
+          th:field="*{credit}"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
     </form>
   </body>
 </html>

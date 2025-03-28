@@ -2,8 +2,12 @@ package com.sis.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "student_score_t")
 public class StudentScore {
@@ -12,34 +16,96 @@ public class StudentScore {
     private Integer studentScoreId;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", nullable = false)
+    @JoinColumn(name = "student_id", nullable = true)
     private Student student;
 
     @ManyToOne
-    @JoinColumn(name = "subject_id", nullable = false)
+    @JoinColumn(name = "subject_id", nullable = true)
     private Subject subject;
 
-    @Column(name = "score1", nullable = false)
+    @Column(name = "score1", nullable = true)
     private Double score1;
 
-    @Column(name = "score2", nullable = false)
+    @Column(name = "score2", nullable = true)
     private Double score2;
 
-    // Getter and Setter for score1
+    // Custom constructor for DataInitializer
+    public StudentScore(Student student, Subject subject, Double score1, Double score2) {
+        this.student = student;
+        this.subject = subject;
+        this.score1 = score1;
+        this.score2 = score2;
+    }
+    
+
+    /**
+     * @return Integer return the studentScoreId
+     */
+    public Integer getStudentScoreId() {
+        return studentScoreId;
+    }
+
+    /**
+     * @param studentScoreId the studentScoreId to set
+     */
+    public void setStudentScoreId(Integer studentScoreId) {
+        this.studentScoreId = studentScoreId;
+    }
+
+    /**
+     * @return Student return the student
+     */
+    public Student getStudent() {
+        return student;
+    }
+
+    /**
+     * @param student the student to set
+     */
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    /**
+     * @return Subject return the subject
+     */
+    public Subject getSubject() {
+        return subject;
+    }
+
+    /**
+     * @param subject the subject to set
+     */
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
+    /**
+     * @return Double return the score1
+     */
     public Double getScore1() {
         return score1;
     }
 
+    /**
+     * @param score1 the score1 to set
+     */
     public void setScore1(Double score1) {
         this.score1 = score1;
     }
 
-    // Getter and Setter for score2
+    /**
+     * @return Double return the score2
+     */
     public Double getScore2() {
         return score2;
     }
 
+    /**
+     * @param score2 the score2 to set
+     */
     public void setScore2(Double score2) {
         this.score2 = score2;
     }
+
 }

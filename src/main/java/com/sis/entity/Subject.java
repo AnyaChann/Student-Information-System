@@ -2,8 +2,12 @@ package com.sis.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "subject_t")
 public class Subject {
@@ -11,14 +15,21 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer subjectId;
 
-    @Column(name = "subject_code", nullable = false, unique = true)
+    @Column(name = "subject_code", nullable = true, unique = true)
     private String subjectCode;
 
-    @Column(name = "subject_name", nullable = false)
+    @Column(name = "subject_name", nullable = true)
     private String subjectName;
 
-    @Column(name = "credit", nullable = false)
+    @Column(name = "credit", nullable = true)
     private Integer credit;
+
+    // Custom constructor for DataInitializer
+    public Subject(String subjectCode, String subjectName, Integer credit) {
+        this.subjectCode = subjectCode;
+        this.subjectName = subjectName;
+        this.credit = credit;
+    }
     
 
     /**
