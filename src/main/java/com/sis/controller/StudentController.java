@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/students")
 public class StudentController {
@@ -16,7 +18,7 @@ public class StudentController {
     @GetMapping("/new")
     public String showStudentForm(Model model) {
         model.addAttribute("student", new Student());
-        return "student-form";
+        return "add-student";
     }
 
     @PostMapping("/save")
@@ -25,22 +27,10 @@ public class StudentController {
         return "redirect:/students";
     }
 
-    public String calculateGrade(Double score1, Double score2) {
-        double grade = (0.3 * score1) + (0.7 * score2);
-        if (grade >= 8.0)
-            return "A";
-        else if (grade >= 6.0)
-            return "B";
-        else if (grade >= 4.0)
-            return "D";
-        else
-            return "F";
-    }
-
     @GetMapping
     public String listStudents(Model model) {
         List<Student> students = studentService.getAllStudents();
         model.addAttribute("students", students);
-        return "student-list";
+        return "index";
     }
 }

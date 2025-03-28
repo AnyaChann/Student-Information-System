@@ -17,11 +17,6 @@ public class Student {
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
-    @Column(name = "address")
-    private String address;
-
-    
-
     /**
      * @return Integer return the studentId
      */
@@ -62,20 +57,6 @@ public class Student {
      */
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    /**
-     * @return String return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * @param address the address to set
-     */
-    public void setAddress(String address) {
-        this.address = address;
     }
 
 }
