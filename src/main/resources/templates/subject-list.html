@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject List</title>
+</head>
+<body>
+    <h1>Subject List</h1>
+    <a href="/subjects/new">+ Add Subject</a>
+    <table border="1" th:if="${!#lists.isEmpty(subjects)}">
+        <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Subject Code</th>
+                <th>Subject Name</th>
+                <th>Credit</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="subject : ${subjects}">
+                <td th:text="${subject.subjectId}"></td>
+                <td th:text="${subject.subjectCode}"></td>
+                <td th:text="${subject.subjectName}"></td>
+                <td th:text="${subject.credit}"></td>
+                <td>
+                    <a th:href="@{/subjects/edit/{id}(id=${subject.subjectId})}">Edit</a>
+                    <a th:href="@{/subjects/delete/{id}(id=${subject.subjectId})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div th:if="${#lists.isEmpty(subjects)}" style="color: red;">No subjects available.</div>
+</body>
+</html>

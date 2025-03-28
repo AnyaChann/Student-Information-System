@@ -9,7 +9,8 @@
     <h1>Student List</h1>
     <a href="/students/new">+ Add Student</a>
     <a href="/scores/new">+ Add Score</a>
-    <table border="1">
+    <a href="/subjects">Subject List</a>
+    <table border="1" th:if="${!#lists.isEmpty(students)}">
       <thead>
         <tr>
           <th>Student ID</th>
@@ -38,5 +39,6 @@
         </tr>
       </tbody>
     </table>
+    <div th:if="${#lists.isEmpty(students)}" style="color: red;">No students available.</div>
   </body>
 </html>
