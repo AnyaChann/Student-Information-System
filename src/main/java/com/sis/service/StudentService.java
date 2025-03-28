@@ -19,4 +19,7 @@ public class StudentService {
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
+        public Student getStudentById(Integer id) {
+        return studentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid student ID: " + id));
+    }
 }

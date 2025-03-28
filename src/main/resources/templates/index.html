@@ -21,7 +21,7 @@
         <a class="navbar-brand" href="/">SIS</a>
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/students">Home</a></li>
             <li class="nav-item">
               <a class="nav-link" href="/students">Student List</a>
             </li>
@@ -69,7 +69,7 @@
           <!-- Display "N/A" if score2 is null -->
           <td th:text="${student.score2 != null ? student.score2 : 'N/A'}"></td>
           <!-- Calculate grade only if both scores are not null -->
-          <td th:text="${student.score1 != null && student.score2 != null ? #numbers.formatDecimal((0.3 * student.score1) + (0.7 * student.score2), 1, 1) : 'N/A'}"></td>
+          <td th:text="${student.grade != null ? student.grade : 'N/A'}"></td>
           <td>
             <a
               th:href="@{/students/edit/{id}(id=${student.studentId})}"

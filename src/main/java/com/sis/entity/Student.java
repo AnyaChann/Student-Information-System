@@ -1,11 +1,12 @@
 package com.sis.entity;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @Entity
 @Table(name = "student_t")
 public class Student {
@@ -19,14 +20,63 @@ public class Student {
     @Column(name = "full_name", nullable = true)
     private String fullName;
 
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<StudentScore> scores; // Association with StudentScore
+
+    @Transient // Not stored in the database
+    private Double score1;
+
+    @Transient // Not stored in the database
+    private Double score2;
+
+    @Transient // Not stored in the database
+    private String grade;
+
     public Student() {
     }
 
-    // Custom constructor for DataInitializer
+    // Custom constructor for initialization
     public Student(String studentCode, String fullName) {
         this.studentCode = studentCode;
         this.fullName = fullName;
     }
+
+    // Getter and Setter for score1
+    public Double getScore1() {
+        return score1;
+    }
+
+    public void setScore1(Double score1) {
+        this.score1 = score1;
+    }
+
+    // Getter and Setter for score2
+    public Double getScore2() {
+        return score2;
+    }
+
+    public void setScore2(Double score2) {
+        this.score2 = score2;
+    }
+
+    // Getter and Setter for grade
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    // Getter and Setter for scores
+    public List<StudentScore> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<StudentScore> scores) {
+        this.scores = scores;
+    }
+
     
 
     /**

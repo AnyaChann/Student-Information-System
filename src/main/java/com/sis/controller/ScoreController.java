@@ -53,4 +53,11 @@ public class ScoreController {
         scoreService.saveScore(score);
         return "redirect:/students";
     }
+
+        @GetMapping
+    public String listScores(Model model) {
+        List<StudentScore> scores = scoreService.getAllScores();
+        model.addAttribute("scores", scores);
+        return "score-list";
+    }
 }
