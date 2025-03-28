@@ -25,21 +25,21 @@ public class StudentScore {
     @Column(name = "score2", nullable = false)
     private Double score2;
 
-    // Getter and Setter for student
-    public Student getStudent() {
-        return student;
+    // Getter and Setter for score1
+    public Double getScore1() {
+        return score1;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setScore1(Double score1) {
+        this.score1 = score1;
     }
 
-    // Getter and Setter for subject
-    public Subject getSubject() {
-        return subject;
+    // Getter and Setter for score2
+    public Double getScore2() {
+        return score2;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setScore2(Double score2) {
+        this.score2 = score2;
     }
 }

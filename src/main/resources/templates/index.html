@@ -6,6 +6,15 @@
     <title>Student List</title>
   </head>
   <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <a href="/">Home</a> | <a href="/students">Student List</a> |
+      <a href="/students/new">Add Student</a> |
+      <a href="/scores/new">Add Score</a> |
+      <a href="/subjects">Subject List</a> |
+      <a href="/subjects/new">Add Subject</a>
+    </nav>
+    <hr />
     <h1>Student List</h1>
     <a href="/students/new">+ Add Student</a>
     <a href="/scores/new">+ Add Score</a>
@@ -33,12 +42,18 @@
             th:text="${#numbers.formatDecimal((0.3 * student.score1) + (0.7 * student.score2), 1, 1)}"
           ></td>
           <td>
-            <a th:href="@{/students/edit/{id}(id=${student.studentId})}">Edit</a>
-            <a th:href="@{/students/delete/{id}(id=${student.studentId})}">Delete</a>
+            <a th:href="@{/students/edit/{id}(id=${student.studentId})}"
+              >Edit</a
+            >
+            <a th:href="@{/students/delete/{id}(id=${student.studentId})}"
+              >Delete</a
+            >
           </td>
         </tr>
       </tbody>
     </table>
-    <div th:if="${#lists.isEmpty(students)}" style="color: red;">No students available.</div>
+    <div th:if="${#lists.isEmpty(students)}" style="color: red">
+      No students available.
+    </div>
   </body>
 </html>
