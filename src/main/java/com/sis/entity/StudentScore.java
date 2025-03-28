@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "student_score_t")
@@ -28,6 +27,9 @@ public class StudentScore {
 
     @Column(name = "score2", nullable = true)
     private Double score2;
+
+    public StudentScore() {
+    }
 
     // Custom constructor for DataInitializer
     public StudentScore(Student student, Subject subject, Double score1, Double score2) {

@@ -64,11 +64,12 @@
           <td th:text="${student.studentId}"></td>
           <td th:text="${student.studentCode}"></td>
           <td th:text="${student.fullName}"></td>
-          <td th:text="${student.score1}"></td>
-          <td th:text="${student.score2}"></td>
-          <td
-            th:text="${#numbers.formatDecimal((0.3 * student.score1) + (0.7 * student.score2), 1, 1)}"
-          ></td>
+          <!-- Display "N/A" if score1 is null -->
+          <td th:text="${student.score1 != null ? student.score1 : 'N/A'}"></td>
+          <!-- Display "N/A" if score2 is null -->
+          <td th:text="${student.score2 != null ? student.score2 : 'N/A'}"></td>
+          <!-- Calculate grade only if both scores are not null -->
+          <td th:text="${student.score1 != null && student.score2 != null ? #numbers.formatDecimal((0.3 * student.score1) + (0.7 * student.score2), 1, 1) : 'N/A'}"></td>
           <td>
             <a
               th:href="@{/students/edit/{id}(id=${student.studentId})}"

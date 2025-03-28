@@ -28,17 +28,17 @@
 
     <h1 class="mb-4">Add Student</h1>
 
-    <form th:action="@{/students/save}" th:object="${student}" method="post" class="row g-3">
+    <form th:action="@{/scores/save}" th:object="${score}" method="post" class="row g-3">
         <div class="col-md-6">
-            <label for="studentCode" class="form-label">Student Code:</label>
-            <input type="text" id="studentCode" name="studentCode" th:field="*{studentCode}" class="form-control" required>
+            <label for="score1" class="form-label">Score 1:</label>
+            <input type="number" step="0.01" id="score1" name="score1" th:field="*{score1}" class="form-control">
         </div>
-
+    
         <div class="col-md-6">
-            <label for="fullName" class="form-label">Full Name:</label>
-            <input type="text" id="fullName" name="fullName" th:field="*{fullName}" class="form-control" required>
+            <label for="score2" class="form-label">Score 2:</label>
+            <input type="number" step="0.01" id="score2" name="score2" th:field="*{score2}" class="form-control">
         </div>
-
+    
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Save</button>
         </div>

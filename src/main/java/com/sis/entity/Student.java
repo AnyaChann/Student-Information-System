@@ -2,11 +2,9 @@ package com.sis.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "student_t")
@@ -20,6 +18,9 @@ public class Student {
 
     @Column(name = "full_name", nullable = true)
     private String fullName;
+
+    public Student() {
+    }
 
     // Custom constructor for DataInitializer
     public Student(String studentCode, String fullName) {

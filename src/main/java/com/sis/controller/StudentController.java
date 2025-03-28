@@ -17,7 +17,7 @@ public class StudentController {
 
     @GetMapping("/new")
     public String showStudentForm(Model model) {
-        model.addAttribute("student", new Student());
+        model.addAttribute("student", new Student()); // Requires a no-argument constructor
         return "add-student";
     }
 

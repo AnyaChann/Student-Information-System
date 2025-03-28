@@ -2,12 +2,8 @@ package com.sis.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "subject_t")
 public class Subject {
@@ -24,7 +20,11 @@ public class Subject {
     @Column(name = "credit", nullable = true)
     private Integer credit;
 
-    // Custom constructor for DataInitializer
+    // No-argument constructor
+    public Subject() {
+    }
+
+    // Custom constructor for initialization
     public Subject(String subjectCode, String subjectName, Integer credit) {
         this.subjectCode = subjectCode;
         this.subjectName = subjectName;
