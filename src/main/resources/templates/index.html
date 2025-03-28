@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student List</title>
+  </head>
+  <body>
+    <h1>Student List</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Student Code</th>
+          <th>Full Name</th>
+          <th>Address</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="student : ${students}">
+          <td th:text="${student.studentCode}"></td>
+          <td th:text="${student.fullName}"></td>
+          <td th:text="${student.address}"></td>
+          <td
+            th:text="${#numbers.formatDecimal((0.3 * student.score1) + (0.7 * student.score2), 1, 1)}"
+          ></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
