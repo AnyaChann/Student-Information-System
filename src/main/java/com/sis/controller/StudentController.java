@@ -43,6 +43,12 @@ public class StudentController {
         return "redirect:/students";
     }
 
+        @GetMapping("/delete/{id}")
+    public String deleteStudent(@PathVariable("id") Integer id) {
+        studentService.deleteStudentById(id);
+        return "redirect:/students";
+    }
+
     @GetMapping
     public String listStudents(Model model) {
         List<Student> students = studentService.getAllStudents();
